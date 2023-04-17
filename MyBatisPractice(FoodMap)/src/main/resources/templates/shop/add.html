@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/head :: head_fragment(title = 'お店の新規登録', scripts = ~{::script}, links = ~{::link})"></head>
+<body>
+ <div class="container">
+    <div th:if="${validationError}" th:each="error : ${validationError}">
+      <label class="text-danger" th:text="${error}"></label>
+    </div>
+    <h1>お店の新規登録</h1>
+    <form th:action="@{/shop/create}" th:object="${ShopReq}" th:method="post">
+      <div class="form-group">
+        <label>名前：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{name}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>お店の場所：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{city}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>ご注文の名前：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{menu}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>お店の評価：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{shopcom}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>ご注文の値段：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{price}" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>ご注文の評価：<span class="text-danger">※</span></label>
+        <input type="text" th:field="*{foodcom}" class="form-control">
+      </div>      
+      <br />    
+      <div class="text-center">
+        <a href="/shop/list" class="btn btn-secondary">キャンセル</a>
+        <input type="submit" value="　登録　" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+</body>
+</html>
